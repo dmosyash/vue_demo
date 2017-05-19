@@ -2,34 +2,32 @@
 <template src="./template.html"></template>
 
 <script>
+  import { Carousel, CarouselItem } from 'vue-l-carousel'
+
+  var list1 = [
+    {
+      url: 'url1'
+    },
+    {
+      url: 'url2'
+    },
+    {
+      url: 'url3'
+    }
+  ]
 
 export default {
-  name: 'slideshow',
-  data () {
-    return {
-      images: ['http://i.imgur.com/vYdoAKu.jpg', 'http://i.imgur.com/PUD9HQL.jpg', 'http://i.imgur.com/Lfv18Sb.jpg', 'http://i.imgur.com/tmVJtna.jpg', 'http://i.imgur.com/ZfFAkWZ.jpg'],
-      currentNumber: 0
-    }
-  },
-
-  mounted: function () {
-    this.startRotation()
-  },
-
-  methods: {
-    startRotation: function () {
-      this.timer = setInterval(this.next, 3000)
+    name: 'slideshow',
+    data () {
+      return {
+        images: ['http://i.imgur.com/vYdoAKu.jpg', 'http://i.imgur.com/PUD9HQL.jpg', 'http://i.imgur.com/Lfv18Sb.jpg', 'http://i.imgur.com/tmVJtna.jpg', 'http://i.imgur.com/ZfFAkWZ.jpg'],
+        list: list1
+      }
     },
-
-    stopRotation: function () {
-      clearTimeout(this.timer)
-      this.timer = null
-    },
-
-    next: function () {
-      this.currentNumber += 1
+    components: {
+      'carousel': Carousel,
+      'carousel-item': CarouselItem
     }
-  }
 }
 </script>
 
